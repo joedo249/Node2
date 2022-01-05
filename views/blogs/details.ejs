@@ -10,7 +10,9 @@
       <div class="content">
         <p><%=blog.body %></p>
       </div>
-      <a class="delete" data-doc="<%=blog._id  %> ">delete</a>
+      <a class="delete" data-doc="<%=blog._id  %> "
+        ><img src="/baseline_delete_black_24dp.png" alt="delete icon"
+      /></a>
     </div>
 
     <%- include('../partials/footer.ejs') %>
@@ -19,7 +21,6 @@
       const trashcan = document.querySelector('a.delete');
       trashcan.addEventListener('click', (e) => {
         const endpoint = `/blogs/${trashcan.dataset.doc}`;
-
         fetch(endpoint, { method: 'delete' })
           .then((response) => response.json())
           .then((data) => (window.location.href = data.redirect))
